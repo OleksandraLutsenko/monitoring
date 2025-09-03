@@ -4,6 +4,16 @@ metadata:
   name: main-rules-alert-config
   namespace: monitoring
 spec:
+  route: 
+    receiver: 'email'
+    repeatInterval: 30m
+    routes: 
+    - matchers: 
+      - name: alertname
+        value: HostHighCpuLoad
+    - matchers: 
+      - name: alertname
+        value: KubernetesPodCrushLooping
   receivers:
   - name: 'email'
     emailConfigs:
